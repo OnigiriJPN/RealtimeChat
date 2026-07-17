@@ -1,19 +1,19 @@
 # RealtimeChat
 リアルタイムでチャット返答など、ライン（LINE）みたいにやり取りができます。
-OSS
+<br>OSS
 
-Open
-Sorce
-Software
-
-なので、改造可です。
-注意点
-改造後、
-必ず、著作権表記をお願いします。
-（MIT LICENSE）
-
+<br>Open
+<br>Sorce
+<br>Software
+<br>
+<br>なので、改造可です。
+<br> **注意点**
+<br>改造後、
+<br>必ず、著作権表記をお願いします。
+<br>（MIT LICENSE）
+<br>
 # 改造するにあたって
 このリポジトリーは、Nodeを使っています。
-npm installを行ってください。
-Node.JS未インストールの場合
-インストールしてください。
+<br>npm installを行ってください。
+<br>Node.JS未インストールの場合
+<br>インストールしてください。
