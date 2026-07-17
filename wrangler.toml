@@ -2,9 +2,9 @@ name = "chat-backend"
 main = "src/index.js"
 compatibility_date = "2026-07-17"
 
-[[durable_objects.bindings]]
-name = "CHAT_ROOM"
-class_name = "ChatRoom"
+[[kv_namespaces]]
+binding = "CHAT_DB"
+id = "7e3f0d653099458892d3cdc090e96809"
 
 [[migrations]]
 tag = "v1"
