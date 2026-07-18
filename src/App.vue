@@ -23,6 +23,20 @@
     margin: 0 auto;
     background: #f3f3f3;
   }
+  .message-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  .message-bubble {
+    background: #ffffff;
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    width: fit-content;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-size: 14px;
+  }
 </style>
 
 <script setup>
