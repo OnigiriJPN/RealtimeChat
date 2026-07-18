@@ -29,7 +29,7 @@ export default {
                 return new Response(JSON.stringify({ status: "success" }), { status: 200, headers });
             }
             if(request.method === "GET" && url.pathname === "/messages") {
-                const list = await env.CHAT_DB.list);
+                const list = await env.CHAT_DB.list();
                 const sortedKeys = list.keys.sort((a, b) => a.name.localeCompare(b.name));
 
                 const messages = [];
