@@ -5,7 +5,3 @@ compatibility_date = "2026-07-17"
 [[kv_namespaces]]
 binding = "CHAT_DB"
 id = "7e3f0d653099458892d3cdc090e96809"
-
-[[migrations]]
-tag = "v1"
-new_classes = ["ChatRoom"]
