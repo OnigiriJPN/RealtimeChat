@@ -26,7 +26,7 @@ export default {
                 const timestamp = Date.now().toString() + Math.random().toString(36).substring(2, 5);
                 // メッセージをKV(データベース)に保存💽💾
                 await env.CHAT_DB.put(timestamp, message);
-                return new Response("OK", { status: 200 });
+                return new Response(JSON.stringify({ status: "success" }), { status: 200, headers });
             }
         }
     }
