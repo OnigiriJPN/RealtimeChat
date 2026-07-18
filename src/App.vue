@@ -37,14 +37,24 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     font-size: 14px;
   }
-
+/* 本格的マイカ風効果を実装*/
   .input-area {
-    padding: 15px;
-    background: rgba(255,255,255,0.8);
-    backdrop-filter: blur(10px);
+    padding: 16px;
+    background: rgba(243,243,243,0.75);
+    border-top: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(20px) saturate(180%);
     display: flex;
-    gap: 10px
+    gap: 12px;
+    position: sticky;
+    bottom: 0;
   }
+  .win11-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s;
 </style>
 
 <script setup>
