@@ -25,16 +25,16 @@ export default {
                 
                 const timestamp = Date.now().toString() + Math.random().toString(36).substring(2, 5);
                 // メッセージをKV(データベース)に保存💽💾
-                await env.CHAT_DBS.put(timestamp, message);
+                await env.CHAT_DB.put(timestamp, message);
                 return new Response(JSON.stringify({ status: "success" }), { status: 200, headers });
             }
             if(request.method === "GET" && url.pathname === "/messages") {
-                const list = await env.CHAT_DBS.list();
+                const list = await env.CHAT_DB.list();
                 const sortedKeys = list.keys.sort((a, b) => a.name.localeCompare(b.name));
 
                 const messages = [];
                 for (const key of sortedKeys) {
-                    const val = await env.CHAT_DBS.get(key.name);
+                    const val = await env.CHAT_DB.get(key.name);
                     messages.push({ time: key.name, text: val});
                 }
                 return new Response(JSON.stringify(messages), { status: 200, headers });
