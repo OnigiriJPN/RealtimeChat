@@ -42,6 +42,14 @@ export default {
 
             return new Response(JSON.stringify({ error: "Not Found" }), { status: 404, headers });
         } catch (err) {
+            console.error("Worker Error! : " + err.message)
+            return new Response(JSON.stringify({ error: "Internal Server Error(内部サーバーエラー)" }), {
+                status: 500,
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            });
         }
         
     }
