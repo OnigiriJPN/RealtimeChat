@@ -31,6 +31,13 @@ export default {
             if(request.method === "GET" && url.pathname === "/messages") {
                 const list = await env.CHAT_DB.list);
                 const sortedKeys = list.keys.sort((a, b) => a.name.localeCompare(b.name));
+
+                const messages = [];
+                for (const key of sortedKeys) {
+                    const val = await env.CHAT_DB.get(key.name);
+                    messages.push({ time: key.name, text: val});
+                }
+                return new Response(JSON.stringify(messages), { status: 200, headers });
             }
 
         }
