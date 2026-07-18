@@ -17,8 +17,13 @@ export default {
             }
             // メッセージを保存する
             if(request.method === "POST" && url.pathname === "/send") {
-                const { message } = await request.json);
-                const timestamp = Date.now).toString();
+                const body = await request.json();
+
+                if(!body.message || typeof body.message !== 'string' || body.message.length > 1000) {
+                    return new Response(JSON.stringify({ error: "Invalid Message" }), { status: 400, headers });
+                }
+                
+                const timestamp = Date.now().toString() + Math.random().toString(36).substring(2, 5);
                 // メッセージをKV(データベース)に保存💽💾
                 await env.CHAT_DB.put(timestamp, message);
                 return new Response("OK", { status: 200 });
