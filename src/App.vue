@@ -37,6 +37,14 @@
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     font-size: 14px;
   }
+
+  .input-area {
+    padding: 15px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    gap: 10px
+  }
 </style>
 
 <script setup>
