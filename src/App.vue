@@ -1,7 +1,10 @@
 <template>
   <div class="chat-container">
     <div class="message-list">
-      <div v-for="(msg, i) in messages" :key="i" class="message-bubble">{{ msg.text }}</div>
+      <div v-for="(msg, i) in messages" :key="i" class="message-bubble">
+        {{ msg.text }}
+      </div>
+      <div v-if="isProcessing" class="status-indicator">送信中...</div>
     </div>
   </div>
   <div class="input-area">
@@ -11,17 +14,19 @@
       placeholder="メッセージを入力"
       class="win11-input"
       />
-    <button @click="handleSend" class="win11-button">送信📤</button>
+    <button @click="handleSend" class="win11-button" :disabled="isProcessing">
+      送信📤
+    </button>
   </div>
 </template>
 <style scoped>
   .chat-container {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 100vh;
     max-width: 600px;
     margin: 0 auto;
-    background: #f3f3f3;
+    background: #f0f0f0;
   }
   .message-list {
     flex: 1;
@@ -30,12 +35,18 @@
   }
   .message-bubble {
     background: #ffffff;
-    padding: 10px 15px;
+    padding: 10px 16px;
     border-radius: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     width: fit-content;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-size: 15px;
+    color: #333;
+  }
+  .status-indicator {
+    font-size: 12px;
+    color: #888;
+    margin-left: 10px;
   }
 /* 本格的マイカ風効果を実装*/
   .input-area {
@@ -55,6 +66,23 @@
     border-radius: 8px;
     outline: none;
     transition: all 0.2s;
+  }
+
+  .win11-input:focus {
+    background: #fff;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0,120,212,0.2);
+  }
+
+  .win11-button {
+    padding: 8px 20px;
+    background: #0078d4;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
 </style>
 
 <script setup>
