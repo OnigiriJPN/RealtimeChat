@@ -40,6 +40,9 @@ export default {
                 return new Response(JSON.stringify(messages), { status: 200, headers });
             }
 
+            return new Response(JSON.stringify({ error: "Not Found" }), { status: 404, headers });
+        } catch (err) {
         }
+        
     }
 }
