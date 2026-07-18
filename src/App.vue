@@ -1,10 +1,8 @@
 <template>
-  <div class="chat">
-    <div class="log" ref="log">
-      <div v-for="m in messages" :key="m.id">{{ m.text }}</div>
+  <div class="chat-container">
+    <div class="message-list">
+      <div v-for="(msg, i) in messages" :key="i" class="message-bubble">{{ msg.text }}</div>
     </div>
-    <input v-model="input" @keyup.enter="send" placeholder="メッセージを入力" />
-    <button @click="send">送信</button>
   </div>
 </template>
 <script setup>
