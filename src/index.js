@@ -40,7 +40,7 @@ export default {
                 return new Response(JSON.stringify(messages), { status: 200, headers });
             }
 
-            // return new Response(JSON.stringify({ error: "Not Found" }), { status: 404, headers });
+            return new Response(JSON.stringify({ status: "success" }), { status: 200, headers });
         } catch (err) {
             console.error("Worker Error! : " + err.message)
             return new Response(JSON.stringify({ error: "Internal Server Error(内部サーバーエラー)" }), {
