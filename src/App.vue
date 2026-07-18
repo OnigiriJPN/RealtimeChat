@@ -83,32 +83,45 @@
     font-weight: 600;
     cursor: pointer;
   }
+
+  .win11-button:disabled {
+    background: #cccccc;
+  }
 </style>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 
 const messages = ref([]);
-const input = ref('');
+const newMessage = ref('');
 let ws;
 
 onMounted(() => {
   try {
     ws = new WebSocket('wss://chat-backend.onigiritv.workers.dev');
     ws.onmessage = (e) => {
-      messages.value.push({ id: Date.now(), text: e.data });
+      const data = JSON.parse(e.data);
+      messages.value.push({ text: data.message });
     };
+    ws.onopen = () => console.log("接続が正常に確立しました。");
+    ws.onclose = () => console.log("接続が切断されました。");
+
   } catch (error) {
     alert("WebSocket接続をしましたが、エラーのため確立されません。\n理由: " + error.Message);
     return;
   }
 });
 
-const send = () => {
-  if (input.value){
-    alert("送信されました。");
-    ws.send(input.value);
-    input.value = '';
-  }
+const HandleSend = () => {
+  if (!newMessage.value.trim() || !ws || ws.readyState !== WebSocket.OPEN) return;
+
+  ws.send(JSON.stringify({ message: newMessage.value }));
+
+  messages.value.push({ text: newMessage.value });
+  newMessage.value = "";
 }
+
+  onUnmounted(() => {
+    if (ws) ws.close();
+  });
 </script>
